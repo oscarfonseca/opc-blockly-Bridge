@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpcServer", "OpcServer\OpcServer.csproj", "{7C0FF950-01EF-4250-89D3-DC48A733E03A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C0FF950-01EF-4250-89D3-DC48A733E03A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C0FF950-01EF-4250-89D3-DC48A733E03A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C0FF950-01EF-4250-89D3-DC48A733E03A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C0FF950-01EF-4250-89D3-DC48A733E03A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
