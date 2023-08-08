@@ -1,16 +1,19 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using OpcServer.Models;
+using OpcServer.OpcClient;
 
 namespace OpcServer.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly IOpcClient _opcClient;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, IOpcClient opcClient)
     {
         _logger = logger;
+        _opcClient = opcClient;
     }
 
     public IActionResult Index()
@@ -32,12 +35,14 @@ public class HomeController : Controller
     [HttpGet("read")]
     public IActionResult Read()
     {
-        return Ok("Read request handled");
+        var valueRead = _opcClient.Read();
+        return Ok($"Read request handled: {valueRead}");
     }
     
     [HttpPost("write")]
     public IActionResult Write()
     {
-        return Ok("Write request handled");
+        var success = _opcClient.Write(true);
+        return Ok($"Write request handled: {success}");
     }
 }
