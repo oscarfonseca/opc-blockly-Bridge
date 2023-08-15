@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using OpcServerApi.DTO;
 using OpcServerApi.OpcClient;
 
 namespace OpcServerApi.Controllers;
@@ -17,16 +18,16 @@ public class OpcController : ControllerBase
     }
 
     [HttpGet("read")]
-    public async Task<IActionResult> Read()
+    public async Task<ActionResult> Read()
     {
         var valueRead = await _opcClient.Read();
         return Ok($"Read request handled: {valueRead}");
     }
     
     [HttpPost("write")]
-    public async Task<IActionResult> Write()
+    public async Task<ActionResult> Write(WriteValueDto newValue)
     {
-        var success = await _opcClient.Write(true);
+        var success = await _opcClient.Write(newValue.Value);
         return Ok($"Write request handled: {success}");
     }
 }
