@@ -1,8 +1,10 @@
 # Usage
 
+Before you start: make sure that the Opc server is running and that you can ping it from your PC.
+
 1. Checkout solution
 2. Start Api with IIS Express for example
-3. You will get the Swagger page with the url and its port at the top as well as the available routes at the bottom. Use Read to read data from the Opc remote server and Write to write data to it.
+3. You will get the Swagger page with the url and its port at the top as well as the available routes at the bottom. Use Read and Write to interact with the Opc server.
 ![image](https://github.com/oscarfonseca/opc-blockly-Bridge/assets/4384944/5d4ddb47-95b8-40db-a0d9-830081edcf86)
 
 4. Install [Postman](https://www.postman.com/downloads/)
