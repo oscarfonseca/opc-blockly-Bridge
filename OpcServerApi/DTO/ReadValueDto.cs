@@ -1,7 +1,6 @@
 ﻿namespace OpcServerApi.DTO;
 
-public class WriteValueDto
+public class ReadValueDto
 {
     public string NodeId { get; set; }
-    public bool Value { get; set; }
 }

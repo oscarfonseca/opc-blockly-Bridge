@@ -1,5 +1,6 @@
 ﻿using Opc.Ua;
 using Opc.Ua.Client;
+using OpcServerApi.DTO;
 using StatusCodes = Opc.Ua.StatusCodes;
 
 namespace OpcServerApi.OpcClient;
@@ -7,18 +8,17 @@ namespace OpcServerApi.OpcClient;
 public class OpcClient : IOpcClient
 {
     const string EndpointUrl = "opc.tcp://172.16.1:4840";
-    const string NodeId = "ns=4;i=10";
     
-    public async Task<bool> Read()
+    public async Task<bool> Read(ReadValueDto readValueDto)
     {
-        var session = OpenSession();
+        var session = OpenSession(EndpointUrl);
         
         var root = session.NodeCache.Find(Objects.RootFolder);
        
-        var readValue = await session.ReadValueAsync(NodeId);
+        var readValue = await session.ReadValueAsync(readValueDto.NodeId);
         
         if(readValue.StatusCode != StatusCodes.Good)
-            Console.WriteLine($"Could not read {NodeId}");
+            Console.WriteLine($"Could not read {readValueDto.NodeId}");
         
         Console.WriteLine($"Read successful, Value: {readValue.Value}");
 
@@ -27,17 +27,16 @@ public class OpcClient : IOpcClient
         return (bool) readValue.Value;
     }
 
-
-    public async Task<bool> Write(bool b)
+    public async Task<bool> Write(WriteValueDto newValue)
     {
-        var session = OpenSession();
+        var session = OpenSession(EndpointUrl);
         
         var root = session.NodeCache.Find(Objects.RootFolder);
         
         var writeValue = new WriteValue {
-            NodeId = NodeId,
+            NodeId = newValue.NodeId,
             AttributeId = Attributes.Value,
-            Value = new DataValue(new Variant(true))
+            Value = new DataValue(new Variant(newValue.Value))
         };
 
         var result = await session.WriteAsync(null, new[] { writeValue }, default);
@@ -49,9 +48,9 @@ public class OpcClient : IOpcClient
         return false;
     }
 
-    private static Session OpenSession()
+    private static Session OpenSession(string endpointUrl)
     {
-        var endpoint = new ConfiguredEndpoint(null, new EndpointDescription(EndpointUrl));
+        var endpoint = new ConfiguredEndpoint(null, new EndpointDescription(endpointUrl));
         var applicationConfiguration = new ApplicationConfiguration();
         var session = Session.Create(applicationConfiguration, endpoint, true, "YourSessionName", 60000, null, null)
             .Result;
