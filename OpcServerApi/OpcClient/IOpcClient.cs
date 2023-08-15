@@ -4,6 +4,6 @@ namespace OpcServerApi.OpcClient;
 
 public interface IOpcClient
 {
-    Task<bool> Read(ReadValueDto readValueDto);
-    Task<bool> Write(WriteValueDto b);
+    Task<bool> Read(GetValueDto getValueDto);
+    Task<bool> Write(PostValueDto b);
 }

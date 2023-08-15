@@ -18,16 +18,20 @@ public class OpcController : ControllerBase
     }
 
     [HttpGet("read")]
-    public async Task<ActionResult> Read(ReadValueDto readValueDto)
+    public async Task<ActionResult<PostValueDto>> Read(GetValueDto getValue)
     {
-        var valueRead = await _opcClient.Read(readValueDto);
-        return Ok($"Read request handled: {valueRead}");
+        var result = await _opcClient.Read(getValue);
+        return new PostValueDto
+        {
+            Value = result,
+            NodeId = getValue.NodeId
+        };
     }
-    
+
     [HttpPost("write")]
-    public async Task<ActionResult> Write(WriteValueDto newValue)
+    public async Task<ActionResult> Write(PostValueDto postValue)
     {
-        var success = await _opcClient.Write(newValue);
+        var success = await _opcClient.Write(postValue);
         return Ok($"Write request handled: {success}");
     }
 }

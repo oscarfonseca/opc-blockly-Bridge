@@ -9,16 +9,16 @@ public class OpcClient : IOpcClient
 {
     const string EndpointUrl = "opc.tcp://172.16.1:4840";
     
-    public async Task<bool> Read(ReadValueDto readValueDto)
+    public async Task<bool> Read(GetValueDto getValueDto)
     {
         var session = OpenSession(EndpointUrl);
         
         var root = session.NodeCache.Find(Objects.RootFolder);
        
-        var readValue = await session.ReadValueAsync(readValueDto.NodeId);
+        var readValue = await session.ReadValueAsync(getValueDto.NodeId);
         
         if(readValue.StatusCode != StatusCodes.Good)
-            Console.WriteLine($"Could not read {readValueDto.NodeId}");
+            Console.WriteLine($"Could not read {getValueDto.NodeId}");
         
         Console.WriteLine($"Read successful, Value: {readValue.Value}");
 
@@ -27,7 +27,7 @@ public class OpcClient : IOpcClient
         return (bool) readValue.Value;
     }
 
-    public async Task<bool> Write(WriteValueDto newValue)
+    public async Task<bool> Write(PostValueDto newValue)
     {
         var session = OpenSession(EndpointUrl);
         
