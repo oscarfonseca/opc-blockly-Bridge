@@ -9,9 +9,14 @@
 5. Start Postman and click **Import**  
    ![image](https://github.com/oscarfonseca/opc-blockly-Bridge/assets/4384944/90b637cc-e3d5-4be1-807f-533188f57e40)  
 6. Select the file ```\Postman\Opc.postman_collection.json```
-7. Use Read and Write requests from the collection to test the API.
-   Please notice that there is a Body provided in both cases (Read and Write).
+7. Use Read and Write requests from the collection to test the API.  
+   Change the port according to step 3.  
+   Notice that there is a Body provided in both cases (Read and Write).  
    ![image](https://github.com/oscarfonseca/opc-blockly-Bridge/assets/4384944/49ed37b5-0a1e-4bd3-89e9-5a8fd06ab7fb)
+   ![image](https://github.com/oscarfonseca/opc-blockly-Bridge/assets/4384944/c5f74b26-5f0a-4a12-8f70-87c2033ef933)
+   ![image](https://github.com/oscarfonseca/opc-blockly-Bridge/assets/4384944/2310156f-f13c-493a-9e28-60f4b838288a)
+
+
 
 
 
