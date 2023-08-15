@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "76ca6628-533f-4645-9014-cd72695715b3",
+		"name": "Opc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16072158"
+	},
+	"item": [
+		{
+			"name": "Read",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nodeId\":\"ns=4;i=10\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44355/Opc/read",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44355",
+					"path": [
+						"Opc",
+						"read"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Write",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nodeId\":\"ns=4;i=10\",\r\n    \"value\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44355/Opc/write",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44355",
+					"path": [
+						"Opc",
+						"write"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
